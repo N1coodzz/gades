@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gates of Olympus Mobil Slot</title>
+  <style>
+    html, body {height:100%;margin:0;padding:0;}
+    body {
+      min-height: 100vh;
+      background: #2b2040 url('background.png') center center/cover no-repeat fixed;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+    }
+    .slot-container {
+      width: 98vw; max-width: 420px;
+      background: rgba(44,20,80,0.80);
+      border-radius: 1.5em;
+      box-shadow: 0 8px 32px #5c47aa33,0 1.5px 6px #0002;
+      position: relative;
+      padding: 1.2em 0.1em 1.2em 0.1em;
+      margin: 1.2em 0 1em 0;
+      overflow: hidden;
+    }
+    .slot-header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.15em;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.7em;
+      color: #ffd700;
+      text-shadow: 0 1px 3px #7c5715, 0 0 8px #fff8;
+    }
+    .slot-reels {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 0.2em 0 1em 0;
+      position: relative;
+      z-index: 3;
+      min-height: 12em;
+      background: none;
+    }
+    .reel {
+      width: 2.1em; min-width: 2.1em; height: 11em;
+      margin: 0 0.08em; border-radius:0.62em; box-shadow:0 0.6px 3px #0002;
+      background: rgba(80,63,153,0.93);
+      overflow:hidden; position:relative;
+      display:flex; flex-direction:column; align-items:center;
+    }
+    .reel-inner {
+      position:absolute; left:0; top:0; width:100%;
+      will-change: transform;
+      display: flex; flex-direction: column;
+      transition: none;
+    }
+    .symbol {
+      width: 2em; height: 2em; margin:0.05em 0;
+      background: #3c285e;
+      border-radius: 0.25em; border:1.2px solid #6a54c5;
+      box-shadow: 0 0 7px #7d5ee633;
+      display: flex; align-items: center; justify-content: center;
+      overflow:hidden; position:relative;
+      transition: box-shadow 0.16s, border 0.16s;
+    }
+    .symbol img {
+      width: 92%; height: 92%; object-fit: contain; display:block;
+      pointer-events: none; user-select: none;
+      filter: drop-shadow(0 0 6px #c0a6ff);
+    }
+    .symbol.scatter {
+      border: 2.5px solid #ffe36c;
+      box-shadow: 0 0 32px #ffe073, 0 0 40px #fffbe6, 0 0 14px #f6e460, 0 0 36px #ffef91;
+      animation: scatterGlow 1.12s cubic-bezier(.24,.8,.5,1.3) infinite alternate;
+    }
+    @keyframes scatterGlow {
+      0% { box-shadow: 0 0 24px #ffe490, 0 0 18px #ffe8b4;}
+      100% { box-shadow: 0 0 40px #fffbe6, 0 0 24px #ffd700;}
+    }
+    .spin-btn {
+      margin: 1.2em auto 0.27em auto;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(90deg,#ffc12e 55%,#a48a2e 100%);
+      color: #7c5715;
+      border: none; border-radius: 2em; font-size: 1.13em; font-weight: bold;
+      padding: 0.65em 2em 0.65em 2em;
+      box-shadow: 0 2px 10px #ecbc4666,0 0.5px 2px #c8992a44;
+      cursor: pointer; letter-spacing: 0.04em;
+      outline: none; transition: background 0.13s, transform 0.12s;
+      user-select: none; touch-action: manipulation; position: relative;
+    }
+    .spin-btn:active {background:linear-gradient(90deg,#ffe288 40%,#c69f2a 100%);transform:scale(0.98);}
+    .win-message {
+      position: absolute; left: 0; right: 0; top: 34%; z-index: 200; text-align: center;
+      font-size: 2em; font-weight: bold; color: #ffe06a;
+      text-shadow: 0 0 18px #392c00, 0 0 54px #ffd700;
+      letter-spacing: 0.04em; opacity: 0;
+      pointer-events: none; animation: none;
+    }
+    .win-message.show {
+      opacity: 1;
+      animation: winText 3.1s cubic-bezier(.36,0,.41,1.16) 1;
+    }
+    @keyframes winText {
+      0% { opacity: 0; transform: scale(0.97) translateY(42px);}
+      12% { opacity: 1; transform: scale(1.10) translateY(-10px);}
+      21% { opacity: 1; transform: scale(1.05) translateY(-4px);}
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: scale(1) translateY(34px);}
+    }
+    .bonus-modal {
+      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 99;
+      background: rgba(37,17,57,0.92);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.18s; pointer-events: none; opacity: 0;
+    }
+    .bonus-modal.show { pointer-events: auto; opacity: 1; }
+    .bonus-box {
+      background: linear-gradient(110deg,#fffbe7 70%,#ffe08c 100%);
+      border-radius: 1.13em;
+      box-shadow: 0 5px 22px #825de6cc, 0 0.5px 3px #5d44b522;
+      min-width: 240px; max-width: 95vw;
+      padding: 1.3em 0.8em 1.0em 0.8em;
+      display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
+      animation: bonusAppear 0.85s cubic-bezier(.42,0,.4,1.19) 1;
+    }
+    @keyframes bonusAppear {
+      0% { opacity: 0; transform: translateY(68px) scale(0.93); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .bonus-emoji { font-size: 2.2em; margin-bottom: 0.5em; filter: drop-shadow(0 2px 7px #fc0);}
+    .bonus-header { font-weight: bold; font-size: 1.15em; color: #bb8500; margin-bottom: 0.18em; }
+    .bonus-desc { color: #48390a; font-size: 1.05em; margin-bottom: 1.00em; }
+    .bonus-btn {
+      display: inline-block; background: linear-gradient(90deg,#ffdd41,#ffd200 95%);
+      color: #3c2d01; font-weight: bold; font-size: 1.13em;
+      border-radius: 2em; box-shadow: 0 1.5px 8px #ffe77e44;
+      padding: 0.74em 2.4em; border: none; outline: none; cursor: pointer;
+      transition: background 0.13s,transform 0.1s; margin-top: 0.4em; letter-spacing: 0.04em;
+    }
+    .bonus-btn:active {background:linear-gradient(90deg,#ffe37a,#ffe31a 95%);transform:scale(0.98);}
+    @media (max-width: 460px) {.slot-container {max-width:98vw; padding:0.45em 0.02em 1em 0.02em;}}
+  </style>
+</head>
+<body>
+  <div class="slot-container">
+    <div class="slot-header">
+      Semboller ekranın herhangi bir yerinde ödeme yapar
+    </div>
+    <div class="slot-reels" id="slotReels"></div>
+    <button class="spin-btn" id="spinBtn">SPIN</button>
+    <div class="win-message" id="winMessage">BONUS! 100 Ücretsiz Döndürme Kazandınız!</div>
+  </div>
+  <div class="bonus-modal" id="bonusModal">
+    <div class="bonus-box">
+      <div class="bonus-emoji">🎁</div>
+      <div class="bonus-header">Tebrikler! Kazandınız!</div>
+      <div class="bonus-desc">100 Ücretsiz Döndürme kazandınız!<br>Bonusunuzu almak için aşağıdaki butona tıklayın.</div>
+      <button class="bonus-btn" id="bonusBtn">BONUSU AL!</button>
+    </div>
+  </div>
+  <script>
+    // Имя файлов (иконки должны быть в одной папке)
+    const icons = [
+      "blue.png","crown.png","cup.png","green.png","hourglass.png",
+      "purple.png","red.png","scatter.png","yellow.png"
+    ];
+    const reelsCount = 6, rowsCount = 5;
+    const SYMBOL_SIZE = 60; // px
+    const DELAYS = [0, 200, 390, 590, 800, 1040];
+    const SPIN_MIN = 24, SPIN_MAX = 30; // обороты
+    const STOP_DURATION = 640;
+    const SCATTER_IDX = 7;
+
+    const slotReels = document.getElementById('slotReels');
+    const spinBtn = document.getElementById('spinBtn');
+    const bonusModal = document.getElementById('bonusModal');
+    const bonusBtn = document.getElementById('bonusBtn');
+    const winMessage = document.getElementById('winMessage');
+
+    function getRandSym() { return Math.floor(Math.random() * icons.length); }
+
+    // Генерирует вертикальный strip для анимации (никаких пустот!)
+    function makeStrip(turns, resultSymbols=null) {
+      let strip = [];
+      for (let i = 0; i < (turns * rowsCount); i++) {
+        strip.push(getRandSym());
+      }
+      // В конце доклеиваем итоговую комбинацию
+      if (resultSymbols) {
+        strip = strip.slice(0, strip.length - rowsCount); // убрать лишнее
+        strip = strip.concat(resultSymbols);
+      }
+      return strip;
+    }
+
+    // Итоговая выигрышная комбинация с 4 scatter
+    function matrixWithFourScatter() {
+      let matrix = [];
+      for (let r = 0; r < reelsCount; r++) {
+        matrix[r] = [];
+        for (let row = 0; row < rowsCount; row++) {
+          matrix[r][row] = getRandSym();
+        }
+      }
+      let placed = 0;
+      while (placed < 4) {
+        let r = Math.floor(Math.random() * reelsCount);
+        let row = Math.floor(Math.random() * rowsCount);
+        if (matrix[r][row] !== SCATTER_IDX) {
+          matrix[r][row] = SCATTER_IDX;
+          placed++;
+        }
+      }
+      return matrix;
+    }
+
+    function renderReels(strips, highlightScatter=false) {
+      slotReels.innerHTML = '';
+      for (let r = 0; r < reelsCount; r++) {
+        let reelDiv = document.createElement('div');
+        reelDiv.className = 'reel';
+        let inner = document.createElement('div');
+        inner.className = 'reel-inner';
+        let strip = strips[r];
+        for (let s = 0; s < strip.length; s++) {
+          let sym = document.createElement('div');
+          sym.className = 'symbol';
+          let idx = strip[s];
+          // подсветка scatter только в итоговых строках
+          if (highlightScatter && s >= strip.length-rowsCount && idx === SCATTER_IDX) sym.classList.add('scatter');
+          let img = document.createElement('img');
+          img.src = icons[idx];
+          sym.appendChild(img);
+          inner.appendChild(sym);
+        }
+        inner.style.transform = `translateY(0px)`;
+        reelDiv.appendChild(inner);
+        slotReels.appendChild(reelDiv);
+      }
+    }
+
+    function animateReel(reel, from, to, duration, cb) {
+      let start = performance.now();
+      function frame(now) {
+        let t = Math.min((now - start) / duration, 1);
+        // Имитация ускорения и замедления:
+        t = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        let pos = from + (to - from) * t;
+        reel.style.transform = `translateY(${pos}px)`;
+        if (t < 1) requestAnimationFrame(frame);
+        else cb && cb();
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function spin() {
+      spinBtn.disabled = true;
+      winMessage.classList.remove('show');
+      // Победим в 33% случаев (или можно всегда если надо)
+      let win = Math.random() < 0.33;
+      let finalMatrix = win ? matrixWithFourScatter() : null;
+
+      // Итоговая последовательность символов для финальной отрисовки
+      let resultSyms = [];
+      if (win && finalMatrix) {
+        for (let r = 0; r < reelsCount; r++) {
+          resultSyms[r] = [];
+          for (let row = 0; row < rowsCount; row++) {
+            resultSyms[r][row] = finalMatrix[r][row];
+          }
+        }
+      } else {
+        for (let r = 0; r < reelsCount; r++) {
+          resultSyms[r] = [];
+          for (let row = 0; row < rowsCount; row++) {
+            resultSyms[r][row] = getRandSym();
+          }
+        }
+      }
+
+      let strips = [];
+      let spinsArr = [];
+      for (let r = 0; r < reelsCount; r++) {
+        let spins = SPIN_MIN + Math.floor(Math.random() * (SPIN_MAX - SPIN_MIN));
+        spinsArr[r] = spins;
+        strips[r] = makeStrip(spins, resultSyms[r]);
+      }
+      renderReels(strips);
+
+      // Анимация каждого рила с задержкой
+      let finished = 0;
+      for (let r = 0; r < reelsCount; r++) {
+        let reel = slotReels.children[r].querySelector('.reel-inner');
+        let stripLen = strips[r].length;
+        let totalShift = (stripLen - rowsCount) * SYMBOL_SIZE;
+        setTimeout(()=>{
+          animateReel(reel, 0, -totalShift, 800 + 170*r, ()=>{
+            // После анимации фиксируем итоговые символы и подсветку scatter
+            reel.style.transition = '';
+            // Оставляем только финальные символы в DOM (быстро и четко)
+            let finalReel = document.createElement('div');
+            finalReel.className = 'reel-inner';
+            for (let row = 0; row < strips[r].length; row++) {
+              let sym = document.createElement('div');
+              sym.className = 'symbol';
+              let idx = strips[r][row];
+              if (row >= strips[r].length-rowsCount && win && finalMatrix && idx === SCATTER_IDX) sym.classList.add('scatter');
+              let img = document.createElement('img');
+              img.src = icons[idx];
+              sym.appendChild(img);
+              finalReel.appendChild(sym);
+            }
+            reel.parentNode.replaceChild(finalReel, reel);
+            finished++;
+            if (finished === reelsCount) {
+              if (win && finalMatrix) showWin();
+              else spinBtn.disabled = false;
+            }
+          });
+        }, DELAYS[r]);
+      }
+    }
+
+    function showWin() {
+      winMessage.classList.add('show');
+      setTimeout(()=>{
+        winMessage.classList.remove('show');
+        setTimeout(showBonus, 900);
+      }, 2100);
+    }
+
+    function showBonus() {
+      bonusModal.classList.add('show');
+    }
+    bonusBtn.onclick = function(){
+      window.location.href = 'https://example.com/';
+    };
+    spinBtn.onclick = spin;
+
+    // Первая отрисовка
+    let strips = [];
+    for (let i = 0; i < reelsCount; i++) strips[i] = makeStrip(25);
+    renderReels(strips);
+  </script>
+</body>
+</html>
