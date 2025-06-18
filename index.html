@@ -13,39 +13,54 @@
       display: flex; align-items: center; justify-content: center; flex-direction: column;
     }
     .slot-container {
-      width: 98vw; max-width: 420px;
-      background: rgba(44,20,80,0.80);
-      border-radius: 1.5em;
+      width: 98vw; max-width: 430px;
+      background: rgba(44,20,80,0.85);
+      border-radius: 1.45em;
       box-shadow: 0 8px 32px #5c47aa33,0 1.5px 6px #0002;
       position: relative;
-      padding: 1.2em 0.1em 1.2em 0.1em;
-      margin: 1.2em 0 1em 0;
+      padding: 1.5em 0.1em 1.6em 0.1em;
+      margin: 1.6em 0 1em 0;
       overflow: hidden;
     }
     .slot-header {
       text-align: center;
       font-weight: bold;
-      font-size: 1.15em;
+      font-size: 1.16em;
       letter-spacing: 0.01em;
-      margin-bottom: 0.7em;
+      margin-bottom: 0.6em;
       color: #ffd700;
       text-shadow: 0 1px 3px #7c5715, 0 0 8px #fff8;
+    }
+    .gates-logo {
+      display: block;
+      margin: 0 auto 0.18em auto;
+      max-width: 76vw;
+      width: 220px;
+      height: auto;
+      filter: drop-shadow(0 2px 15px #ffe36c99);
+    }
+    .zeus-img {
+      position: absolute;
+      right: 6px;
+      bottom: 11px;
+      width: 82px;
+      z-index: 8;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 12px #bdbbfa66);
     }
     .slot-reels {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      margin: 0.2em 0 1em 0;
+      align-items: flex-start;
+      margin: 0.5em 0 1em 0;
       position: relative;
       z-index: 3;
-      min-height: 12em;
-      background: none;
+      min-height: 13em;
     }
     .reel {
-      width: 2.1em; min-width: 2.1em; height: 11em;
-      margin: 0 0.08em; border-radius:0.62em; box-shadow:0 0.6px 3px #0002;
-      background: rgba(80,63,153,0.93);
-      overflow:hidden; position:relative;
+      width: 2.1em; min-width: 2.1em; height: 11.1em;
+      margin: 0 0.09em; border-radius:0.62em; box-shadow:0 0.6px 3px #0002;
+      background: none; overflow:hidden; position:relative;
       display:flex; flex-direction:column; align-items:center;
     }
     .reel-inner {
@@ -55,18 +70,19 @@
       transition: none;
     }
     .symbol {
-      width: 2em; height: 2em; margin:0.05em 0;
-      background: #3c285e;
-      border-radius: 0.25em; border:1.2px solid #6a54c5;
-      box-shadow: 0 0 7px #7d5ee633;
+      width: 2em; height: 2em; margin:0.06em 0;
+      background: transparent;
+      border-radius: 0.25em;
+      border: none;
+      box-shadow: none;
       display: flex; align-items: center; justify-content: center;
       overflow:hidden; position:relative;
       transition: box-shadow 0.16s, border 0.16s;
     }
     .symbol img {
-      width: 92%; height: 92%; object-fit: contain; display:block;
+      width: 100%; height: 100%; object-fit: contain; display:block;
       pointer-events: none; user-select: none;
-      filter: drop-shadow(0 0 6px #c0a6ff);
+      filter: drop-shadow(0 0 6px #c0a6ff33);
     }
     .symbol.scatter {
       border: 2.5px solid #ffe36c;
@@ -78,12 +94,12 @@
       100% { box-shadow: 0 0 40px #fffbe6, 0 0 24px #ffd700;}
     }
     .spin-btn {
-      margin: 1.2em auto 0.27em auto;
+      margin: 1.18em auto 0.18em auto;
       display: flex; align-items: center; justify-content: center;
       background: linear-gradient(90deg,#ffc12e 55%,#a48a2e 100%);
       color: #7c5715;
-      border: none; border-radius: 2em; font-size: 1.13em; font-weight: bold;
-      padding: 0.65em 2em 0.65em 2em;
+      border: none; border-radius: 2em; font-size: 1.14em; font-weight: bold;
+      padding: 0.67em 2.05em 0.67em 2.05em;
       box-shadow: 0 2px 10px #ecbc4666,0 0.5px 2px #c8992a44;
       cursor: pointer; letter-spacing: 0.04em;
       outline: none; transition: background 0.13s, transform 0.12s;
@@ -91,26 +107,27 @@
     }
     .spin-btn:active {background:linear-gradient(90deg,#ffe288 40%,#c69f2a 100%);transform:scale(0.98);}
     .win-message {
-      position: absolute; left: 0; right: 0; top: 34%; z-index: 200; text-align: center;
-      font-size: 2em; font-weight: bold; color: #ffe06a;
+      position: absolute; left: 0; right: 0; top: 32%; z-index: 200; text-align: center;
+      font-size: 2.12em; font-weight: bold; color: #ffe06a;
       text-shadow: 0 0 18px #392c00, 0 0 54px #ffd700;
       letter-spacing: 0.04em; opacity: 0;
-      pointer-events: none; animation: none;
+      pointer-events: none;
+      animation: none;
     }
     .win-message.show {
       opacity: 1;
-      animation: winText 3.1s cubic-bezier(.36,0,.41,1.16) 1;
+      animation: winText 3.6s cubic-bezier(.36,0,.41,1.16) 1;
     }
     @keyframes winText {
       0% { opacity: 0; transform: scale(0.97) translateY(42px);}
-      12% { opacity: 1; transform: scale(1.10) translateY(-10px);}
-      21% { opacity: 1; transform: scale(1.05) translateY(-4px);}
+      12% { opacity: 1; transform: scale(1.14) translateY(-7px);}
+      21% { opacity: 1; transform: scale(1.07) translateY(-2px);}
       80% { opacity: 1; }
       100% { opacity: 0; transform: scale(1) translateY(34px);}
     }
     .bonus-modal {
       position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 99;
-      background: rgba(37,17,57,0.92);
+      background: rgba(37,17,57,0.91);
       display: flex; align-items: center; justify-content: center;
       transition: opacity 0.18s; pointer-events: none; opacity: 0;
     }
@@ -139,15 +156,22 @@
       transition: background 0.13s,transform 0.1s; margin-top: 0.4em; letter-spacing: 0.04em;
     }
     .bonus-btn:active {background:linear-gradient(90deg,#ffe37a,#ffe31a 95%);transform:scale(0.98);}
-    @media (max-width: 460px) {.slot-container {max-width:98vw; padding:0.45em 0.02em 1em 0.02em;}}
+    @media (max-width: 600px) {
+      .gates-logo { width: 93vw; max-width: 96vw; }
+      .zeus-img { width: 53px; bottom: 4px;}
+      .slot-container { max-width: 99vw;}
+      .slot-reels { min-height: 9em; }
+    }
   </style>
 </head>
 <body>
   <div class="slot-container">
+    <img class="gates-logo" src="gates.png" alt="Gates of Olympus" />
     <div class="slot-header">
       Semboller ekranın herhangi bir yerinde ödeme yapar
     </div>
     <div class="slot-reels" id="slotReels"></div>
+    <img class="zeus-img" src="god.png" alt="Zeus" />
     <button class="spin-btn" id="spinBtn">SPIN</button>
     <div class="win-message" id="winMessage">BONUS! 100 Ücretsiz Döndürme Kazandınız!</div>
   </div>
@@ -160,16 +184,16 @@
     </div>
   </div>
   <script>
-    // Имя файлов (иконки должны быть в одной папке)
+    // Имена иконок PNG — лежат рядом с index.html
     const icons = [
       "blue.png","crown.png","cup.png","green.png","hourglass.png",
       "purple.png","red.png","scatter.png","yellow.png"
     ];
     const reelsCount = 6, rowsCount = 5;
-    const SYMBOL_SIZE = 60; // px
-    const DELAYS = [0, 200, 390, 590, 800, 1040];
-    const SPIN_MIN = 24, SPIN_MAX = 30; // обороты
-    const STOP_DURATION = 640;
+    const SYMBOL_SIZE = 56;
+    const SPIN_MIN = 13, SPIN_MAX = 16; // чуть разная длина, для плавности
+    const REEL_DELAY = 210; // задержка старта каждого барабана
+    const STOP_SMOOTH = 630; // плавная остановка в мс
     const SCATTER_IDX = 7;
 
     const slotReels = document.getElementById('slotReels');
@@ -178,23 +202,17 @@
     const bonusBtn = document.getElementById('bonusBtn');
     const winMessage = document.getElementById('winMessage');
 
+    let spinState = 0; // 0 — первый холостой, 1 — бонусный с выигрышем
+
     function getRandSym() { return Math.floor(Math.random() * icons.length); }
 
-    // Генерирует вертикальный strip для анимации (никаких пустот!)
-    function makeStrip(turns, resultSymbols=null) {
+    function makeStrip(turns) {
+      let needed = (turns * rowsCount) + rowsCount + 15;
       let strip = [];
-      for (let i = 0; i < (turns * rowsCount); i++) {
-        strip.push(getRandSym());
-      }
-      // В конце доклеиваем итоговую комбинацию
-      if (resultSymbols) {
-        strip = strip.slice(0, strip.length - rowsCount); // убрать лишнее
-        strip = strip.concat(resultSymbols);
-      }
+      for (let i = 0; i < needed; i++) strip.push(getRandSym());
       return strip;
     }
 
-    // Итоговая выигрышная комбинация с 4 scatter
     function matrixWithFourScatter() {
       let matrix = [];
       for (let r = 0; r < reelsCount; r++) {
@@ -203,19 +221,21 @@
           matrix[r][row] = getRandSym();
         }
       }
-      let placed = 0;
-      while (placed < 4) {
+      // Ставим ровно 4 scatter в случайных позициях
+      let positions = [];
+      while (positions.length < 4) {
         let r = Math.floor(Math.random() * reelsCount);
         let row = Math.floor(Math.random() * rowsCount);
-        if (matrix[r][row] !== SCATTER_IDX) {
+        let key = `${r}_${row}`;
+        if (!positions.includes(key)) {
+          positions.push(key);
           matrix[r][row] = SCATTER_IDX;
-          placed++;
         }
       }
       return matrix;
     }
 
-    function renderReels(strips, highlightScatter=false) {
+    function renderReels(strips, highlightMatrix = null) {
       slotReels.innerHTML = '';
       for (let r = 0; r < reelsCount; r++) {
         let reelDiv = document.createElement('div');
@@ -227,8 +247,10 @@
           let sym = document.createElement('div');
           sym.className = 'symbol';
           let idx = strip[s];
-          // подсветка scatter только в итоговых строках
-          if (highlightScatter && s >= strip.length-rowsCount && idx === SCATTER_IDX) sym.classList.add('scatter');
+          // Подсветка scatter только для последних (выигрышных) символов
+          if (highlightMatrix && s >= strip.length-rowsCount && highlightMatrix[r] && highlightMatrix[r][s-strip.length+rowsCount] === SCATTER_IDX) {
+            sym.classList.add('scatter');
+          }
           let img = document.createElement('img');
           img.src = icons[idx];
           sym.appendChild(img);
@@ -240,85 +262,70 @@
       }
     }
 
-    function animateReel(reel, from, to, duration, cb) {
-      let start = performance.now();
-      function frame(now) {
-        let t = Math.min((now - start) / duration, 1);
-        // Имитация ускорения и замедления:
-        t = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-        let pos = from + (to - from) * t;
-        reel.style.transform = `translateY(${pos}px)`;
-        if (t < 1) requestAnimationFrame(frame);
-        else cb && cb();
-      }
-      requestAnimationFrame(frame);
-    }
-
     function spin() {
       spinBtn.disabled = true;
       winMessage.classList.remove('show');
-      // Победим в 33% случаев (или можно всегда если надо)
-      let win = Math.random() < 0.33;
-      let finalMatrix = win ? matrixWithFourScatter() : null;
 
-      // Итоговая последовательность символов для финальной отрисовки
-      let resultSyms = [];
-      if (win && finalMatrix) {
-        for (let r = 0; r < reelsCount; r++) {
-          resultSyms[r] = [];
-          for (let row = 0; row < rowsCount; row++) {
-            resultSyms[r][row] = finalMatrix[r][row];
-          }
-        }
-      } else {
-        for (let r = 0; r < reelsCount; r++) {
-          resultSyms[r] = [];
-          for (let row = 0; row < rowsCount; row++) {
-            resultSyms[r][row] = getRandSym();
-          }
-        }
-      }
-
-      let strips = [];
-      let spinsArr = [];
-      for (let r = 0; r < reelsCount; r++) {
+      let strips = [], spinsArr = [];
+      for (let i = 0; i < reelsCount; i++) {
         let spins = SPIN_MIN + Math.floor(Math.random() * (SPIN_MAX - SPIN_MIN));
-        spinsArr[r] = spins;
-        strips[r] = makeStrip(spins, resultSyms[r]);
+        spinsArr[i] = spins;
+        strips[i] = makeStrip(spins);
       }
       renderReels(strips);
 
-      // Анимация каждого рила с задержкой
+      let finalMatrix = (spinState === 1) ? matrixWithFourScatter() : null;
+
       let finished = 0;
       for (let r = 0; r < reelsCount; r++) {
         let reel = slotReels.children[r].querySelector('.reel-inner');
-        let stripLen = strips[r].length;
-        let totalShift = (stripLen - rowsCount) * SYMBOL_SIZE;
+        let spins = spinsArr[r];
+        let totalSteps = (spins * rowsCount) * SYMBOL_SIZE;
+        let startPos = 0;
+
         setTimeout(()=>{
-          animateReel(reel, 0, -totalShift, 800 + 170*r, ()=>{
-            // После анимации фиксируем итоговые символы и подсветку scatter
-            reel.style.transition = '';
-            // Оставляем только финальные символы в DOM (быстро и четко)
-            let finalReel = document.createElement('div');
-            finalReel.className = 'reel-inner';
-            for (let row = 0; row < strips[r].length; row++) {
-              let sym = document.createElement('div');
-              sym.className = 'symbol';
-              let idx = strips[r][row];
-              if (row >= strips[r].length-rowsCount && win && finalMatrix && idx === SCATTER_IDX) sym.classList.add('scatter');
-              let img = document.createElement('img');
-              img.src = icons[idx];
-              sym.appendChild(img);
-              finalReel.appendChild(sym);
+          // Плавная ease-out анимация:
+          let duration = 900 + r * 190; // каждый следующий дольше
+          let finalOffset = -((makeStrip(spins).length - rowsCount) * SYMBOL_SIZE);
+
+          reel.style.transition = '';
+          reel.style.transform = `translateY(0px)`;
+
+          // анимация прокрута
+          setTimeout(()=>{
+            reel.style.transition = `transform ${duration}ms cubic-bezier(.23,1,.35,1)`;
+            reel.style.transform = `translateY(${finalOffset}px)`;
+          }, 18);
+
+          // После остановки — выставить итоговую комбинацию
+          setTimeout(()=>{
+            if (spinState === 1 && finalMatrix) {
+              // Бонус — рисуем выигрышную
+              reel.innerHTML = '';
+              for (let i = 0; i < rowsCount; i++) {
+                let sym = document.createElement('div');
+                sym.className = 'symbol';
+                if (finalMatrix[r][i] === SCATTER_IDX) sym.classList.add('scatter');
+                let img = document.createElement('img');
+                img.src = icons[finalMatrix[r][i]];
+                sym.appendChild(img);
+                reel.appendChild(sym);
+              }
+              reel.style.transition = 'none';
+              reel.style.transform = `translateY(${-(rowsCount-0)*SYMBOL_SIZE}px)`;
             }
-            reel.parentNode.replaceChild(finalReel, reel);
             finished++;
             if (finished === reelsCount) {
-              if (win && finalMatrix) showWin();
-              else spinBtn.disabled = false;
+              if (spinState === 1 && finalMatrix) {
+                showWin();
+                spinState = 0; // сброс обратно к холостому
+              } else {
+                spinBtn.disabled = false;
+                spinState = 1; // теперь бонус
+              }
             }
-          });
-        }, DELAYS[r]);
+          }, duration + 48);
+        }, r * REEL_DELAY);
       }
     }
 
@@ -326,22 +333,23 @@
       winMessage.classList.add('show');
       setTimeout(()=>{
         winMessage.classList.remove('show');
-        setTimeout(showBonus, 900);
-      }, 2100);
+        setTimeout(showBonus, 1000);
+      }, 3200);
     }
 
     function showBonus() {
       bonusModal.classList.add('show');
     }
     bonusBtn.onclick = function(){
-      window.location.href = 'https://example.com/';
+      window.location.href = 'https://example.com/'; // ← сюда свою ссылку!
     };
     spinBtn.onclick = spin;
 
-    // Первая отрисовка
+    // Первая отрисовка (статичная)
     let strips = [];
-    for (let i = 0; i < reelsCount; i++) strips[i] = makeStrip(25);
+    for (let i = 0; i < reelsCount; i++) strips[i] = makeStrip(15);
     renderReels(strips);
+
   </script>
 </body>
 </html>
