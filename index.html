@@ -1,37 +1,240 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Сюрприз 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме Владислава</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Резюме Владислава — аналитик, антифрод, арбитраж трафика. Подработка с прицелом на фулл-тайм.">
+  <meta name="author" content="Владислав">
+  <meta name="keywords" content="аналитик, антифрод, арбитраж трафика, резюме, iGaming, Crypto, KYC, AML">
+  <link rel="canonical" href="https://yourdomain.com">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Резюме Владислава">
+  <meta property="og:description" content="Аналитика, антифрод, арбитраж трафика. Ищу подработку, рассматриваю фулл-тайм в перспективе.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:image" content="https://yourdomain.com/assets/img/preview.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
+    html { scroll-behavior: smooth; }
     body {
-      background: #ffe6f0;
-      text-align: center;
-      font-family: sans-serif;
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
     }
-    h1 {
-      color: #ff3399;
-      font-size: 3em;
-      margin-top: 20px;
+    .bg-white {
+      background-color: #1e1e1e !important;
     }
-    .heart {
-      animation: pulse 1s infinite;
-      font-size: 4em;
-      color: red;
-      margin-top: 30px;
+    .navbar-light .navbar-nav .nav-link {
+      color: #f1f1f1;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    section {
+      padding-top: 30px;
+    }
+    h2 i {
+      color: #0d6efd;
+    }
+    .form-control, .form-label {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+    }
+    .form-control::placeholder {
+      color: #aaa;
+    }
+    .form-control:focus {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
     }
   </style>
 </head>
-<body>
-  <div class="heart">❤️</div>
-  <h1>For you </h1>
-  <p>Мир?</p>
 
-  <img src="https://i.imgur.com/IQYaAbz.png"alt="imga">
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
 
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-light" href="#">Резюме</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">Обо мне</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Опыт</a></li>
+        <li class="nav-item"><a class="nav-link" href="#arbitrage">Арбитраж</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Навыки</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="container text-center py-5">
+  <h1 class="mb-3">Владислав</h1>
+  <p class="lead">Москва, 21 год</p>
+  <p class="mb-4">
+    Ищу подработку в сфере анализа данных и арбитража трафика.<br>
+    Готов рассматривать <strong>переход на полную занятость</strong> со временем.
+  </p>
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+    <a href="assets/Vladislav_CV.pdf" class="btn btn-primary btn-lg" download>
+      <i class="fas fa-download me-2"></i>Скачать резюме
+    </a>
+    <a href="#contact" class="btn btn-outline-light btn-lg">
+      <i class="fas fa-envelope me-2"></i>Связаться
+    </a>
+    <button onclick="downloadPDF()" class="btn btn-success btn-lg">
+      <i class="fas fa-file-download me-2"></i>Скачать как PDF
+    </button>
+  </div>
+</header>
+
+<main id="resume">
+
+<section class="container mb-5" id="about" data-aos="fade-up">
+  <h2><i class="fas fa-user me-2"></i>Обо мне</h2>
+  <h5 class="mt-3">Образование</h5>
+  <ul>
+    <li>СПО: Администратор баз данных (2020–2024)</li>
+    <li>ВУЗ: В процессе (2024–2027)</li>
+  </ul>
+  <p>
+    С 2023 года работаю в Crypto iGaming-проекте. Прошёл путь от стажера до аналитика 4 категории.  
+    Отвечаю за антифрод, KYC/AML, мониторинг транзакций и комплаенс. Параллельно развиваюсь в арбитраже трафика.
+  </p>
+</section>
+
+<section class="container mb-5" id="experience" data-aos="fade-up">
+  <h2><i class="fas fa-briefcase me-2"></i>Опыт работы</h2>
+  <h5>Crypto iGaming-проект (офис)</h5>
+  <p><em>06.07.2023 — настоящее время</em></p>
+  <ul>
+    <li><strong>Стажер-практикант</strong> (06.07.2023 — 05.10.2023)</li>
+    <li><strong>Аналитик 5 категории</strong> (05.10.2023 — 10.06.2024)</li>
+    <li><strong>Аналитик 4 категории</strong> (10.06.2024 — 01.02.2025)</li>
+  </ul>
+  <h6 class="mt-3">Основные задачи:</h6>
+  <ul class="list-unstyled">
+    <li><i class="fas fa-shield-alt me-2 text-primary"></i>Антифрод</li>
+    <li><i class="fas fa-user-check me-2 text-primary"></i>KYC / AML</li>
+    <li><i class="fas fa-scale-balanced me-2 text-primary"></i>Комплаенс</li>
+    <li><i class="fas fa-chart-line me-2 text-primary"></i>Транзакционный анализ</li>
+    <li><i class="fas fa-handshake me-2 text-primary"></i>Поддержка партнёрской программы</li>
+  </ul>
+</section>
+
+<section class="container mb-5" id="arbitrage" data-aos="fade-up">
+  <h2><i class="fas fa-bullhorn me-2"></i>Арбитраж трафика</h2>
+  <p>Самостоятельно запускал push-рекламные кампании на Tier-3. Делал креативы, преленды, логи в Telegram, анализировал через PeerClick.</p>
+  <ol>
+    <li><a href="https://n1coodzz.github.io/nz-lendings/1/" target="_blank">Преленд #1</a></li>
+    <li><a href="https://n1coodzz.github.io/levpro2/" target="_blank">Преленд #2</a></li>
+    <li><a href="https://n1coodzz.github.io/mex/" target="_blank">Преленд #3</a></li>
+    <li><a href="https://n1coodzz.github.io/nzrkeo/" target="_blank">Преленд #4</a></li>
+  </ol>
+  <p><strong>Инструменты:</strong> RichAds, CTR/CR анализ, PeerClick, Telegram API, A/B тесты, UTM-метки.</p>
+</section>
+
+<section class="container mb-5" id="skills" data-aos="fade-up">
+  <h2><i class="fas fa-cogs me-2"></i>Навыки</h2>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <h6 class="text-primary">Аналитика и безопасность</h6>
+      <span class="badge bg-secondary me-1 mb-1">Anti-fraud</span>
+      <span class="badge bg-secondary me-1 mb-1">KYC / AML</span>
+      <span class="badge bg-secondary me-1 mb-1">Crypto-комплаенс</span>
+      <span class="badge bg-secondary me-1 mb-1">Blockchain-аналитика</span>
+    </div>
+    <div class="col-md-6 mb-3">
+      <h6 class="text-primary">Арбитраж и маркетинг</h6>
+      <span class="badge bg-secondary me-1 mb-1">Push-реклама</span>
+      <span class="badge bg-secondary me-1 mb-1">PeerClick</span>
+      <span class="badge bg-secondary me-1 mb-1">Telegram API</span>
+      <span class="badge bg-secondary me-1 mb-1">UTM-логгирование</span>
+      <span class="badge bg-secondary me-1 mb-1">A/B тестирование</span>
+    </div>
+    <div class="col-md-6 mb-3">
+      <h6 class="text-primary">Инструменты</h6>
+      <span class="badge bg-secondary me-1 mb-1">SQL</span>
+      <span class="badge bg-secondary me-1 mb-1">Excel</span>
+      <span class="badge bg-secondary me-1 mb-1">Google Sheets</span>
+      <span class="badge bg-secondary me-1 mb-1">Поведенческие паттерны</span>
+    </div>
+  </div>
+</section>
+
+  <!-- вставлены все секции about, experience, arbitrage, skills, contact, включая форму -->
+</main>
+
+<section class="container mb-5" id="contact" data-aos="fade-up">
+  <h2><i class="fas fa-envelope me-2"></i>Контакты</h2>
+  <p><i class="fas fa-paper-plane me-2"></i>Email: <a href="mailto:fetbhfndf@inbox.ru">fetbhfndf@inbox.ru</a></p>
+  <p><i class="fab fa-telegram me-2"></i>Telegram: <a href="https://t.me/Nicoodz" target="_blank">@Nicoodz</a></p>
+
+  <form id="feedbackForm" class="mt-4">
+    <div class="mb-3">
+      <label for="name" class="form-label">Имя</label>
+      <input type="text" class="form-control" id="name" placeholder="Ваше имя" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Сообщение</label>
+      <textarea class="form-control" id="message" rows="4" placeholder="Ваше сообщение..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-paper-plane me-2"></i>Отправить
+    </button>
+  </form>
+</section>
+
+<footer class="text-center py-4">
+  <small>&copy; 2024 Владислав. Все права защищены.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  AOS.init();
+
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Форма в разработке. Свяжитесь через Telegram.');
+  });
+
+  function downloadPDF() {
+    const element = document.getElementById('resume');
+    const opt = {
+      margin: 0.5,
+      filename: 'resume_vladislav.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  }
+</script>
 </body>
 </html>
